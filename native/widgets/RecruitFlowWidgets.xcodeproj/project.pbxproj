@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		002D1D4B73EAE042D2811B78 /* Sources/Core/WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA3396B69DC2AA7C8A913E /* Sources/Core/WidgetSnapshot.swift */; };
+		18BE16EAD78973FB52DF5B51 /* Sources/Host/RecruitFlowWidgetsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D90D3F59CF87F04AA4D53E0 /* Sources/Host/RecruitFlowWidgetsApp.swift */; };
+		34EF9D620893FBE89D4B8E1C /* Sources/Widgets/WidgetIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D010E28537ACC2F5C968D /* Sources/Widgets/WidgetIntent.swift */; };
+		37A12E734D03E053626187AB /* Sources/Shared/AppGroupSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422D87F2901E4B68F4E8F43 /* Sources/Shared/AppGroupSnapshot.swift */; };
+		3C879F2A4436EDEC29ACDAD8 /* Sources/Core/WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA3396B69DC2AA7C8A913E /* Sources/Core/WidgetSnapshot.swift */; };
+		50F0ACF203B584CCD8159A0A /* Sources/Core/WidgetPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0AA5F341953AC3DB48FF39 /* Sources/Core/WidgetPresentation.swift */; };
+		89E83659DEDFE553491A71BD /* Sources/Shared/AppGroupSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422D87F2901E4B68F4E8F43 /* Sources/Shared/AppGroupSnapshot.swift */; };
+		A0466CFD69DC56FE154207B9 /* Sources/Widgets/RecruitFlowWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C11C35DEA77C8807CE3A4C /* Sources/Widgets/RecruitFlowWidgets.swift */; };
+		CEB88BDB2B50466136810106 /* Sources/Core/WidgetPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0AA5F341953AC3DB48FF39 /* Sources/Core/WidgetPresentation.swift */; };
+		FF851D4624D07F349F47BC68 /* RecruitFlowWidgetExtension.appex in Embed Widget Extension */ = {isa = PBXBuildFile; fileRef = BAED5656D7765AF70698CC8C /* RecruitFlowWidgetExtension.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11D1B8256090E31178F691D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 244210E48437B6556980A702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22ADA138EE7FE27DD563A7A2;
+			remoteInfo = RecruitFlowWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		82B66AAD5A6807EEAEAB15BE /* Embed Widget Extension */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FF851D4624D07F349F47BC68 /* RecruitFlowWidgetExtension.appex in Embed Widget Extension */,
+			);
+			name = "Embed Widget Extension";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1059CE8CA6C6D2D1DE4D83D2 /* RecruitFlow Widgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "RecruitFlow Widgets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		128D010E28537ACC2F5C968D /* Sources/Widgets/WidgetIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Widgets/WidgetIntent.swift; sourceTree = "<group>"; };
+		2602952F5B3FF5196B8CBC4D /* Config/Host-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Config/Host-Info.plist"; sourceTree = "<group>"; };
+		51C11C35DEA77C8807CE3A4C /* Sources/Widgets/RecruitFlowWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Widgets/RecruitFlowWidgets.swift; sourceTree = "<group>"; };
+		72344A1086A4343E5F08538D /* Config/Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config/Widget.entitlements; sourceTree = "<group>"; };
+		8A0AA5F341953AC3DB48FF39 /* Sources/Core/WidgetPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Core/WidgetPresentation.swift; sourceTree = "<group>"; };
+		8D90D3F59CF87F04AA4D53E0 /* Sources/Host/RecruitFlowWidgetsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Host/RecruitFlowWidgetsApp.swift; sourceTree = "<group>"; };
+		94DA3396B69DC2AA7C8A913E /* Sources/Core/WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Core/WidgetSnapshot.swift; sourceTree = "<group>"; };
+		BAED5656D7765AF70698CC8C /* RecruitFlowWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; path = RecruitFlowWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C422D87F2901E4B68F4E8F43 /* Sources/Shared/AppGroupSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources/Shared/AppGroupSnapshot.swift; sourceTree = "<group>"; };
+		E348067D58B0F2793A24D309 /* Config/Widget-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Config/Widget-Info.plist"; sourceTree = "<group>"; };
+		F21F4D0C7FFC3B16A260E148 /* Config/Host.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config/Host.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0C3C33457D195DA8CF59BE06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F591BBC415DFCC49DC1F0E0B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A3E27B8CA818264D75C8D81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1059CE8CA6C6D2D1DE4D83D2 /* RecruitFlow Widgets.app */,
+				BAED5656D7765AF70698CC8C /* RecruitFlowWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4813494D137E1631BBA301D5 = {
+			isa = PBXGroup;
+			children = (
+				8A0AA5F341953AC3DB48FF39 /* Sources/Core/WidgetPresentation.swift */,
+				94DA3396B69DC2AA7C8A913E /* Sources/Core/WidgetSnapshot.swift */,
+				8D90D3F59CF87F04AA4D53E0 /* Sources/Host/RecruitFlowWidgetsApp.swift */,
+				C422D87F2901E4B68F4E8F43 /* Sources/Shared/AppGroupSnapshot.swift */,
+				51C11C35DEA77C8807CE3A4C /* Sources/Widgets/RecruitFlowWidgets.swift */,
+				128D010E28537ACC2F5C968D /* Sources/Widgets/WidgetIntent.swift */,
+				2602952F5B3FF5196B8CBC4D /* Config/Host-Info.plist */,
+				F21F4D0C7FFC3B16A260E148 /* Config/Host.entitlements */,
+				E348067D58B0F2793A24D309 /* Config/Widget-Info.plist */,
+				72344A1086A4343E5F08538D /* Config/Widget.entitlements */,
+				0A3E27B8CA818264D75C8D81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22ADA138EE7FE27DD563A7A2 /* RecruitFlowWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83A68D476CB5A5A567ED5AB1 /* Build configuration list for PBXNativeTarget "RecruitFlowWidgetExtension" */;
+			buildPhases = (
+				298BFCBB4EB10C217178601F /* Sources */,
+				0C3C33457D195DA8CF59BE06 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecruitFlowWidgetExtension;
+			productName = RecruitFlowWidgetExtension;
+			productReference = BAED5656D7765AF70698CC8C /* RecruitFlowWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A4D509D867B286A002A4C0B2 /* RecruitFlow Widgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F7CE986BE87F10470A65BA3 /* Build configuration list for PBXNativeTarget "RecruitFlow Widgets" */;
+			buildPhases = (
+				73CCCCA0EB794B900091F5EC /* Sources */,
+				F591BBC415DFCC49DC1F0E0B /* Frameworks */,
+				82B66AAD5A6807EEAEAB15BE /* Embed Widget Extension */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFDE31AFDF9FB9D31BDDE76B /* PBXTargetDependency */,
+			);
+			name = "RecruitFlow Widgets";
+			productName = "RecruitFlow Widgets";
+			productReference = 1059CE8CA6C6D2D1DE4D83D2 /* RecruitFlow Widgets.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		244210E48437B6556980A702 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					22ADA138EE7FE27DD563A7A2 = {
+						ProvisioningStyle = Automatic;
+					};
+					A4D509D867B286A002A4C0B2 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = FFE8EE2E0BE1F5956FA67195 /* Build configuration list for PBXProject "RecruitFlowWidgets" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = pl;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				pl,
+				en,
+				Base,
+			);
+			mainGroup = 4813494D137E1631BBA301D5;
+			productRefGroup = 0A3E27B8CA818264D75C8D81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4D509D867B286A002A4C0B2 /* RecruitFlow Widgets */,
+				22ADA138EE7FE27DD563A7A2 /* RecruitFlowWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		298BFCBB4EB10C217178601F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEB88BDB2B50466136810106 /* Sources/Core/WidgetPresentation.swift in Sources */,
+				3C879F2A4436EDEC29ACDAD8 /* Sources/Core/WidgetSnapshot.swift in Sources */,
+				89E83659DEDFE553491A71BD /* Sources/Shared/AppGroupSnapshot.swift in Sources */,
+				A0466CFD69DC56FE154207B9 /* Sources/Widgets/RecruitFlowWidgets.swift in Sources */,
+				34EF9D620893FBE89D4B8E1C /* Sources/Widgets/WidgetIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73CCCCA0EB794B900091F5EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F0ACF203B584CCD8159A0A /* Sources/Core/WidgetPresentation.swift in Sources */,
+				002D1D4B73EAE042D2811B78 /* Sources/Core/WidgetSnapshot.swift in Sources */,
+				37A12E734D03E053626187AB /* Sources/Shared/AppGroupSnapshot.swift in Sources */,
+				18BE16EAD78973FB52DF5B51 /* Sources/Host/RecruitFlowWidgetsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFDE31AFDF9FB9D31BDDE76B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22ADA138EE7FE27DD563A7A2 /* RecruitFlowWidgetExtension */;
+			targetProxy = 11D1B8256090E31178F691D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0B0C687DF8B6B8DC790B519C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		73EBF6644258C120893E685D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9AD757328FBA0087E54990FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Widget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WC7US5VH6R;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/Widget-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.szymonpokusinski.recruitflow.widgets.extension;
+				PRODUCT_NAME = RecruitFlowWidgetExtension;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A1B66532EC40E8AFC72F1ECF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/Host.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WC7US5VH6R;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/Host-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.szymonpokusinski.recruitflow.widgets;
+				PRODUCT_NAME = "RecruitFlow Widgets";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CC0DC7EE2D54F8924A196A1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Config/Host.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WC7US5VH6R;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/Host-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.szymonpokusinski.recruitflow.widgets;
+				PRODUCT_NAME = "RecruitFlow Widgets";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D20A933185A2F18535D467E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = Config/Widget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = WC7US5VH6R;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "Config/Widget-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.szymonpokusinski.recruitflow.widgets.extension;
+				PRODUCT_NAME = RecruitFlowWidgetExtension;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F7CE986BE87F10470A65BA3 /* Build configuration list for PBXNativeTarget "RecruitFlow Widgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC0DC7EE2D54F8924A196A1B /* Debug */,
+				A1B66532EC40E8AFC72F1ECF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83A68D476CB5A5A567ED5AB1 /* Build configuration list for PBXNativeTarget "RecruitFlowWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AD757328FBA0087E54990FE /* Debug */,
+				D20A933185A2F18535D467E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFE8EE2E0BE1F5956FA67195 /* Build configuration list for PBXProject "RecruitFlowWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				73EBF6644258C120893E685D /* Debug */,
+				0B0C687DF8B6B8DC790B519C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 244210E48437B6556980A702 /* Project object */;
+}
