@@ -40,7 +40,8 @@ return [
             'connection' => env('DB_QUEUE_CONNECTION'),
             'table' => env('DB_QUEUE_TABLE', 'jobs'),
             'queue' => env('DB_QUEUE', 'default'),
-            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
+            // Must exceed the 930s AI worker timeout; prevents concurrent redelivery.
+            'retry_after' => max(990, (int) env('DB_QUEUE_RETRY_AFTER', 990)),
             'after_commit' => false,
         ],
 
