@@ -1,59 +1,201 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# RecruitFlow Desktop
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**An offline-first macOS application for managing job opportunities and recruitment processes.**
 
-## About Laravel
+Built with Laravel 12, NativePHP Desktop 2, Vue 3, TypeScript and Quasar.
+RecruitFlow keeps offers, applications and recruitment history in local SQLite,
+with optional Google Sheets synchronization, email integrations and AI providers.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a personal portfolio project by **Szymon Pokusiński**, demonstrating
+backend architecture, desktop integration, typed frontend development and data
+integrity across local and external systems. The domain supports different
+professions; IT-specific requirements are optional attributes.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Review the project:** [Architecture](#engineering-decisions) ·
+[Source code](#code-map) · [Local setup](#run-locally) · [Tests](#tests) ·
+[Implementation scope](#scope-and-limitations)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![RecruitFlow desktop interface with demonstration data](docs/screenshots/recruitflow-desktop-demo.jpg)
 
-## Learning Laravel
+*An earlier demonstration build. The screenshot contains synthetic data; current
+screens include additional recruitment and integration features.*
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## What the application does
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Offer inbox:** search, filters, sorting, favorites and interest levels. Offers
+  with a sent CV are separated from opportunities awaiting action.
+- **Manual offer management:** quick URL-only drafts or detailed forms with
+  structured salary, location, requirements and custom attributes.
+- **Recruitment tracking:** record a sent CV, change stages, use a Kanban board
+  and maintain a chronological event history.
+- **Offline persistence:** local changes survive restarts without a Google account.
+- **Configurable Google Sheets sources:** OAuth with PKCE, automatic schema
+  detection, column mappings, local cache, outbox and conflict handling.
+- **Offer import:** preview public Pracuj.pl listing data in an editable form
+  before saving. Source failures are reported; access controls are not bypassed.
+- **AI integration:** interchangeable Cursor and Gemini drivers share one typed
+  result contract. Category prompts, scheduled scans and deduplicated findings
+  are independent of the provider.
+- **Email workspace:** configurable accounts, Gmail/IMAP adapters, incremental
+  synchronization, classification rules and on-demand message content retrieval.
+- **macOS integration:** native windows and menus, Swift WidgetKit extension,
+  local snapshots and deep links back into the desktop application.
 
-## Laravel Sponsors
+## Engineering decisions
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Concern | Approach |
+|---|---|
+| Local source of truth | SQLite; transactional domain changes and durable outbox |
+| External synchronization | Stable record identifiers, field mapping and explicit conflict resolution |
+| Secrets | macOS Keychain where available; configuration examples contain no credentials |
+| Frontend | Vue Composition API, strict TypeScript, Inertia navigation and Quasar components |
+| Provider independence | Contracts, resolvers and normalized DTOs for AI and integration adapters |
+| Import safety | Fetch/parse/normalize/preview are separate from the final save operation |
+| Native widgets | A versioned snapshot boundary separates WidgetKit from Laravel storage |
+| Verification | Laravel tests, HTTP fakes, frontend tests, type checking and production builds |
 
-### Premium Partners
+Business rules live in backend services and frontend domain modules rather than
+being embedded in view components. AI findings do not automatically become
+accepted offers or overwrite user preferences.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Local writes and external synchronization
 
-## Contributing
+A user action is validated and saved locally before any external API call.
+Related domain records and outbox operations are created transactionally, so
+an unavailable network does not turn a successful local save into a failed action.
+Synchronization compares stable identifiers and mapped fields, preserves Sheets
+formulas and surfaces conflicts instead of treating every change as last-write-wins.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### AI as an adapter boundary
 
-## Code of Conduct
+`AiProviderInterface` exposes search, analysis and capabilities. Cursor and Gemini
+translate their transport formats into `AiResult`; shared validation rejects
+invalid results before persistence. Category scanning owns prompts, run history
+and deduplication, allowing provider changes without rewriting jobs or models.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Useful entry points for code review
 
-## Security Vulnerabilities
+- [Local recruitment service](app/Recruitment/LocalRecruitmentService.php):
+  transactional offer/application actions and history.
+- [Outbox synchronizer](app/Integrations/OutboxSynchronizer.php): external writes
+  separated from the user's local transaction.
+- [AI contract](app/Services/Ai/Contracts/AiProviderInterface.php) and
+  [category scanning](app/Services/Ai/Scanning/CategoryScanService.php).
+- [Offer inbox rules](resources/js/domain/offerInbox.ts): deciding what remains
+  actionable independently of the table component.
+- [Widget snapshot boundary](app/Widgets/WidgetSnapshotPublisher.php): publishing
+  data for a separate native extension.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Code map
 
-## License
+```text
+app/
+  Recruitment/              Local recruitment operations and synchronization
+  Integrations/             Google OAuth, Sheets adapters and field mappings
+  Services/Ai/              Provider contract, Cursor/Gemini, validation and scanning
+  Services/Mail/            Email providers, synchronization and classification
+  Models/                   Recruitment, integration, AI and email persistence
+  Widgets/                  Snapshot publication and widget refresh
+resources/js/
+  Pages/                    Inertia page components
+  components/               Reusable Quasar UI
+  domain/                   Mapping, filtering and derived state
+  services/                 Typed API access
+  composables/              Shared application state and interactions
+native/
+  desktop/                  macOS packaging and deep-link bridge
+  widgets/                  Swift / WidgetKit host and extension
+tests/                      Backend, frontend and desktop bridge tests
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Run locally
+
+Requirements: PHP 8.3+, Composer, Node.js 22.12+, npm and SQLite support.
+NativePHP runs on macOS; building WidgetKit targets additionally requires Xcode
+and your own Apple signing configuration. No API account is required for local
+offer and application management.
+
+From a **fresh clone**:
+
+```bash
+composer install
+npm ci
+cp .env.example .env
+php artisan key:generate
+touch database/database.sqlite
+php artisan migrate
+npm run build
+```
+
+For a browser preview, configure Laravel Herd for this directory and set
+`APP_URL` in `.env` to your local URL, or run:
+
+```bash
+php artisan serve
+```
+
+For the desktop application:
+
+```bash
+php artisan native:install --no-interaction
+php artisan native:migrate
+php artisan native:run --no-dependencies
+```
+
+Do not overwrite an existing `.env` or recreate an existing database when updating.
+Herd and NativePHP use separate SQLite files. Optional integrations require your
+own credentials and permissions; they are not preconfigured in the repository.
+AI scanning is opt-in and may incur provider charges.
+
+## Tests
+
+```bash
+php artisan test --compact
+npm test
+npm run typecheck
+npm run build
+```
+
+Tests cover local recruitment operations, stable identities and deduplication,
+sync conflicts, formula preservation, provider mapping, retry behavior and
+frontend filtering. Automated API tests use controlled fakes; they are not proof
+of production API availability. Native signing, permissions and widget gallery
+behavior require verification on a configured Mac.
+
+Latest local verification (18 October 2026): **402 Laravel tests passed**
+(2,903 assertions), **40 frontend/desktop JavaScript tests passed**, TypeScript
+type checking and the Vite production build completed successfully. This verifies
+the automated suite, not every external integration in a live environment.
+
+## Scope and limitations
+
+- This repository contains source code, not a notarized public macOS release.
+- Google Sheets write paths require an explicitly writable source. Automated
+  write tests do not certify a live production spreadsheet.
+- Cursor and Gemini have automated contract/transport tests; live AI calls were
+  not verified as part of the provider implementation.
+- OLX import is not part of the published importer implementation. Any future
+  access requires a separate permissions decision.
+- External listing structures and API availability can change. Import errors
+  remain visible rather than producing invented fields.
+- This is an actively developed personal application; optional integrations have
+  their own configuration and verification requirements.
+
+## Documentation
+
+- [Development and operational notes (Polish)](docs/DEVELOPMENT.md)
+- [Google OAuth and integration setup](docs/google-oauth.md)
+- [AI provider architecture](docs/ai/PROVIDERS.md)
+- [Cursor driver](docs/ai/CURSOR.md) / [Gemini driver](docs/ai/GEMINI.md)
+- [Category scanning and scheduling](docs/ai/SCANNING.md)
+- [Pracuj.pl import research and limitations](docs/research/pracuj-pl/RESEARCH_REPORT.md)
+- [macOS packaging](docs/desktop/INSTALLED_MACOS.md)
+- [WidgetKit implementation](docs/widgets/MACOS_WIDGETS_IMPLEMENTATION.md)
+
+Local databases, OAuth client files, API keys, snapshots and private exports are
+excluded from version control. Screenshots and fixtures should never be used as
+a way to publish a user's private recruitment data.
+
+The checked-in NativePHP runtime is third-party code; its upstream notice is
+preserved in [nativephp/LICENSE.md](nativephp/LICENSE.md). Application-specific
+features are built on top of Laravel, NativePHP and the other listed frameworks.
